@@ -12,6 +12,13 @@ export interface ICustomerDetail<U, T> extends Car {
   car: Car;
 }
 
+export interface CustomerModel {
+  userName: string;
+  password: string;
+  nickName: string;
+  gender: string;
+}
+
 export interface ISuccessRet<T> {
   code: number;
   ret: T;

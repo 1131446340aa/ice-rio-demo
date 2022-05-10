@@ -6,9 +6,10 @@ import {
   ErrorMiddleware,
   required,
   validated,
-  All
+  All,
+  render
 } from 'ice-rio';
-import { IValidatedJson } from '../interface';
+import { IValidatedJson } from '../../interface';
 
 const validatorJSONStr = (str: string) => {
   try {
@@ -22,7 +23,7 @@ const validatorJSONStr = (str: string) => {
   }
 };
 @controller('/user')
-export default class GetTest {
+export default class GetUser {
   // demo http://localhost:3000/user/detail/1
   /**
    * @description: 验证 Params装饰器、required 校验普通类型、中间件功能
@@ -70,5 +71,16 @@ export default class GetTest {
     attrs: IValidatedJson
   ): Promise<{ message: string }> {
     return { message: `this is a test api,the str is ${attrs.jsonStr}` };
+  }
+
+  // demo http://localhost:3000/user/validateView?title=index
+  /**
+   * @description: 验证 view
+   * @param {*}
+   * @return {*}
+   */
+  @get()
+  async validateView(@Query() title:string) {
+    return render('index.ejs', { title });
   }
 }

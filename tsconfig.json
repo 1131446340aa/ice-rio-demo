@@ -20,5 +20,5 @@
       "strictPropertyInitialization": false,
       "outDir": "./dist",
   },
-  "exclude": ["node_modules/**/*","apiDoc/**/*","dist/**/*"]
+  "exclude": ["node_modules/**/*","__autoGenerate__/apiDoc/**/*","dist/**/*","interface"]
 }

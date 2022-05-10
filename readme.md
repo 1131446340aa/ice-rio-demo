@@ -1,5 +1,25 @@
-1. 先运行 npm run dev, 会根据上下文生成 api doc 注释文件，然后关掉终端
+# 主要功能
 
-2. npm run build。 将 api doc 注释文件生成 api doc 项目文件
+- 装饰器语法
 
-3. npm run watch。 开始使用  controller 层写了一些路由供使用
+- 一键建表
+
+- 根据 ts 接口参数校验
+
+- 自动生成 api doc
+
+
+1. 开发环境
+
+`npm run dev`
+
+2. 生产环境
+
+- 修改 load 函数的 env 参数为 build
+
+- `npm run dev` // 生成一些配置文件
+
+- 修改 load 函数的 env 参数为 prod, 配置 apiDocDir 目录为 './public'
+
+- `npm run build`
+

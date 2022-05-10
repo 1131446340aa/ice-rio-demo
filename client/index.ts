@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // demo1 测试接口 1
 axios
-  .post('http://localhost:3000/customer/detail', {
+  .post('http://localhost:3000/customer/getCustomerDetail', {
     age: 25,
     shape: {
       height: 180,
@@ -12,7 +12,7 @@ axios
       // money 可选，但是输入的必须是数字,否则会报错
       // money: 19
     },
-    car: { price: 21 },
+    car: { price: '0' },
     price: 21,
     helpers: ['21'],
     des: 'happy'

@@ -2,9 +2,9 @@
   "name": "landing-test",
   "version": "0.0.6",
   "scripts": {
-    "dev": "ts-node index.ts",
-    "watch": "nodemon --watch './controller/*' --exec 'npm run dev' --verbose -e ts",
-    "build": "tsc && apidoc -i apiDoc/ -o dist/public/"
+    "dev": "ts-node index.ts dev",
+    "watch": "nodemon --watch './app/*' --exec 'npm run dev' --verbose -e ts",
+    "build": "rm -rf dist && ts-node index.ts build && tsc &&  cp -rf app/views dist/app && apidoc -i __autoGenerate__/apiDoc/ -o dist/public/"
   },
   "keywords": [],
   "author": "huanglihao@bytedance.com",
@@ -18,6 +18,6 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "ice-rio": "^1.0.9"
+    "ice-rio": "^1.1.4"
   }
 }

@@ -1,17 +1,24 @@
 import path from 'path';
-import { HttpServer } from 'ice-rio';
+import { ErrorMiddleware, HttpServer } from 'ice-rio';
+
 async function run() {
+  let isDev = true;
+  //@ts-ignore
+  const env: 'dev' | 'prod' | 'build' =
+    process.argv[2] || (isDev ? 'dev' : 'prod');
   let h = new HttpServer({
     hooks: {
-      beforeCreated: []
+      beforeCreated: [ErrorMiddleware()]
     }
   });
-    await h.load({
-    dir: path.join(__dirname),
+  await h.load({
+    rootDir: path.join(__dirname),
+    appDir: './app',
     initDb: false,
-    apiDoc: true,
-    apiDocDir: './public',
-    env:'dev',
+    enableApiDoc: true,
+    enableViews: true,
+    apiDocDir: env === 'prod' ? './public' : '',
+    env: env,
     dbConfig: {
       port: 3306,
       host: 'xx.xxx.xx.xx',
@@ -21,7 +28,7 @@ async function run() {
       dialect: 'mysql'
     }
   });
-  h.listen(3000,()=>{
+  h.listen(3000, () => {
     console.log(`the server is running http://localhost:3000/`);
   });
 }
